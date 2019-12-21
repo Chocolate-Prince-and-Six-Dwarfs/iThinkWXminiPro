@@ -1,21 +1,84 @@
 /**index.wxss**/
-.userinfo {
+
+.username_item{
+  position: absolute;
+  left: 48px;
+  top: 230px;
+  width: 240px;
+  height: 40px;
+  line-height: 26px;
+  border-radius: 8px;
+  color: rgb(194, 36, 36);
+  font-size: 18px;
+  text-align: center;
+  font-family: Arial;
+  border: 1px solid rgba(187, 187, 187, 1);
+  background-color: rgba(255, 255, 255, 1);
+}
+ 
+.password_item{
+  position: absolute;
+  left: 46px;
+  top: 285px;
+  width: 243px;
+  height: 40px;
+  line-height: 26px;
+  border-radius: 8px;
+  color: rgb(66, 143, 21);
+  font-size: 18px;
+  text-align: center;
+  font-family: Arial;
+  border: 1px solid rgba(187, 187, 187, 1);
+  background-color: rgba(255, 255, 255, 1);
+}
+ 
+.bussiness_input {
+  left: 143px;
+  top: 221px;
+  width: 242px;
+  height: 40px;
+  opacity: 0.3;
+  color: rgba(16, 16, 16, 1);
+  font-size: 20px;
+  text-align: center;
+  font-family: PingFangSC-regular;
+}
+ 
+.login_submit {
+  position: absolute;
+  left: 80px;
+  top: 350px;
+  width: 160px;
+  height: 40px;
+  line-height: 20px;
+  background-color: rgba(62, 68, 105, 1);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgba(187, 187, 187, 1);
+  font-size: 28px;
+  text-align: center;
+  font-family: PingFangSC-regular;
+}
+
+.title{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.titleContent{
+   font-size:35px;
+   text-align: center;  
+}
+.Image{
+ display:flex;                   
+ justify-content: center;  
+}
+.ithinkImage{
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top:50px   
 }
 
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
+page{background-color:#eeeeee;}

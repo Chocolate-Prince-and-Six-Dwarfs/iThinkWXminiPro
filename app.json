@@ -1,13 +1,41 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/home/home",
+    "pages/user/user",
+    "pages/logs/logs",
+    "pages/capsule/capsule"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "iThink创意实现",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/home2.png",
+        "iconPath": "images/home1.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/capsule2.png",
+        "iconPath": "images/capsule1.png",
+        "pagePath": "pages/capsule/capsule",
+        "text": "胶囊"
+      },
+      {
+        "selectedIconPath": "images/user2.png",
+        "iconPath": "images/user1.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

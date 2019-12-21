@@ -4,51 +4,45 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    userN: '',
+    passW: ''
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  userNameInput: function (e) {
+    this.setData({
+      userN: e.detail.value
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+  passWordInput: function (e) {
+    this.setData({
+      passW: e.detail.value
+    })
+  },
+  loginBtnClick: function (a) {
+    var that = this
+    if (this.data.userN.length == 0 || this.data.passW.length == 0) {
+      wx.showModal({
+        title: '温馨提示：',
+        content: '用户名或密码不能为空！',
+        showCancel: false
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+      db.collection('abc'[数据表名]).where({ username: that.data.userN }).get({
+        success: function (res) {
+
+          if (that.data.passW == res.data[0].password) {
+            wx.redirectTo({
+              url: '/pages/index/index'//[主页面]
+            })
+          }
+          else {
+            wx.showModal({
+              title: '密码错误',
+              content: '密码错误'//session中用户名和密码不为空触发
+            });
+          }
         }
       })
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   }
 })
