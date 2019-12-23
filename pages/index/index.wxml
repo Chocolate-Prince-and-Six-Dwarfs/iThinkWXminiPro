@@ -3,7 +3,7 @@
 <image class="ithinkImage" src="/images/ithink.jpg" mode="aspectFill"></image>
 </view>
  <view class='username_item'>
-    <input class='bussiness_input' name="username"  bindinput='userNameInput' placeholder='输入邮箱'/>
+    <input class='bussiness_input' name="email"  bindinput='userNameInput' placeholder='输入邮箱'/>
  </view>
  <view class='password_item'>
     <input class='bussiness_input' password type="text" name="password" bindinput='passWordInput' placeholder='输入密码'/>

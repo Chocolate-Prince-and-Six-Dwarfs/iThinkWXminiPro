@@ -21,6 +21,13 @@ Page({
   onReady: function () {
 
   },
+  //点击按钮跳转至跳转页面
+  goToIndexPage:function(options)
+  {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示
