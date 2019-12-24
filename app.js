@@ -1,8 +1,7 @@
-const TOKEN = 'token'
 
 App({
   globalData:{
-    token:''
+   userid:''
   },
   onLaunch: function () {
     //云开发初始化
@@ -28,7 +27,7 @@ App({
   },
 
 
-  //检查token是否过期
+/*  //检查token是否过期
 check_token(token){
 
 },
@@ -64,5 +63,5 @@ login(){
 
       }
     })
-  }
+  }*/
 })

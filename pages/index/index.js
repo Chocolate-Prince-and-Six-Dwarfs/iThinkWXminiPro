@@ -1,8 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 import request from '../../utils/util.js'
+
 
 Page({
   data: {
@@ -30,7 +30,7 @@ Page({
     console.log("点击按钮!" + "获取到的用户名:" + this.data.email + "获取到的密码:" + this.data.pwd)
     var that=this;
     wx.request({
-      url: 'http://localhost:8080/user/wxlogin',//后面详细介绍
+      url: 'http://localhost:8080/user/login',//后面详细介绍
       //定义传到后台的数据
       data: {
         //从全局变量data中获取数据
@@ -39,21 +39,51 @@ Page({
       },
       method: 'POST',//定义传到后台接受的是post方法还是get方法
       header: {
-        "content-type": "application/x-www-form-urlencoded"
+        "content-type": "application/x-www-form-urlencoded",
       },
       success: function (res) {
         console.log("调用API成功");
         console.log("回调函数:" + res.data)
-        console.log(res);
-        if (res.data == true) {
+        console.log(res)
+        //保存cookie
+        if (res.data.status == 1) {
+          if (res.header['Set-Cookie'] != '') {
+            wx.setStorageSync('Set-Cookie', res.header['Set-Cookie'])
+          }
           wx.showToast({
             title: '登陆成功',
+            success: function () {
+              wx.switchTab({
+                url: '../home/home'
+              })
+            }
+          })
+        }
+        else if (res.data.status == -1) {
+          wx.showModal({
+            title: '登陆失败',
+            content: '用户名不存在',
+            showCancel: false
+          })
+        }
+        else if (res.data.status == 0) {
+          wx.showModal({
+            title: '登陆失败',
+            content: '密码错误',
+            showCancel: false
+          })
+        }
+        else if (res.data.status == -2) {
+          wx.showModal({
+            title: '登陆失败',
+            content: '用户名或密码格式不正确',
+            showCancel: false
           })
         }
         else {
           wx.showModal({
             title: '登陆失败',
-            content: '用户名或者密码错误',
+            content: '网络错误',
             showCancel: false
           })
         }
@@ -62,13 +92,18 @@ Page({
         console.log("调用API失败");
       }
     })
-    //用封装的request请求
-    //request({
-    //  url: 'http://47.97.187.33:8080/user/login'
-    //}).then(res =>{
-    //  console.log(res)
-    //}).catch(err =>{
-    //  console.log(err)
-    //})
+
+    wx.request({
+      url: 'http://localhost:8080/user/getLoginId',
+      method:'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'cookie': wx.getStorageSync('Set-Cookie')
+      },
+      success(data) {
+        app.globalData.userid = data;
+        console.log(data)
+      }
+    })
   }
 })
