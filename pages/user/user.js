@@ -1,73 +1,38 @@
 // pages/user/user.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    name:'',
+    head:'',
+    intro:''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    var that=this;
+    if (app.globalData.userid!=null)
+    {
+      console.log(app.globalData.userid)
+      wx.request({
+        url: 'http://47.97.187.33:8080/user/getById',
+        data:{
+          id: app.globalData.userid
+        },
+        method:"POST",
+        header: { "content-type": "application/x-www-form-urlencoded" },
+        success: function (res) {
+          console.log(res)
+          const name = res.data.name;
+          const head = "data:image/png;base64,"+res.data.head;
+          const intro = res.data.introduction
+          that.setData({
+            name:name,
+            head:head,
+            intro: intro
+          })
+        }
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  //点击按钮跳转至跳转页面
-  goToIndexPage:function(options)
-  {
-    wx.navigateTo({
-      url: '../index/index',
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

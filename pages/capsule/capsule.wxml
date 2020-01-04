@@ -1,2 +1,13 @@
 <!--pages/capsule/capsule.wxml-->
-<text>pages/capsule/capsule.wxml</text>
+
+ <view class="line">
+ 我的创意胶囊
+ </view>
+
+ <view class="recommend">
+    <view class="recommend-item">
+      <text class="item-title">创意胶囊名：{{name}}</text>
+      <text class="item-user">内容：{{content}}</text>
+    </view>
+ </view>
+<button class='goodbutton'  hover-class="hover">添加创意胶囊</button>

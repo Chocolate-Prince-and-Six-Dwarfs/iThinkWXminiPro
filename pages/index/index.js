@@ -30,7 +30,7 @@ Page({
     console.log("点击按钮!" + "获取到的用户名:" + this.data.email + "获取到的密码:" + this.data.pwd)
     var that=this;
     wx.request({
-      url: 'http://localhost:8080/user/login',//后面详细介绍
+      url: 'http://47.97.187.33:8080//user/login',//后面详细介绍
       //定义传到后台的数据
       data: {
         //从全局变量data中获取数据
@@ -49,6 +49,18 @@ Page({
         if (res.data.status == 1) {
           if (res.header['Set-Cookie'] != '') {
             wx.setStorageSync('Set-Cookie', res.header['Set-Cookie'])
+            wx.request({
+              url: 'http://47.97.187.33:8080/user/getLoginId',
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'cookie': wx.getStorageSync('Set-Cookie')
+              },
+              success(res) {
+                app.globalData.userid = res.data;
+              }
+            })
+            console.log(app.globalData.userid);
           }
           wx.showToast({
             title: '登陆成功',
@@ -92,9 +104,9 @@ Page({
         console.log("调用API失败");
       }
     })
-
-    wx.request({
-      url: 'http://localhost:8080/user/getLoginId',
+    console.log(app.globalData.userid)
+   /* wx.request({
+      url: 'http://47.97.187.33:8080/user/getLoginId',
       method:'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -104,6 +116,6 @@ Page({
         app.globalData.userid = data;
         console.log(data)
       }
-    })
+    })*/
   }
 })

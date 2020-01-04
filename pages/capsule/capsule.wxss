@@ -1,1 +1,42 @@
-/* pages/capsule/capsule.wxss */
+
+.goodbutton {
+  margin-top: 30px;
+  width: 80%;
+  background-color: rgb(59, 152, 240);
+  color: white;
+  border-radius: 98rpx;
+  background: bg_red;
+}
+ 
+/* 按下变颜色 */
+.hover {
+  background:  rgba(119, 177, 224, 0.616);
+}
+
+.line{
+  width: 100%;
+ border-bottom:1px #989898 solid;
+ text-align: center;
+ font-size:25px;
+ color: #4c43c0ea
+}
+.recommend-item{
+  width: 100%;
+  height: 80px;
+  background-color: #9cc0f063;
+  margin-bottom: 10px;
+}
+.item-title{
+  width: 100%;
+  display: flex;
+  float:left;
+}
+.item-user{
+  width: 100%;
+  display: flex;
+  
+}
+.item-button{
+  display: flex;
+  float:right; 
+}

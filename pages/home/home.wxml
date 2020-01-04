@@ -1,2 +1,21 @@
-<!--pages/home/home.wxml-->
-<text>主页</text>
+<swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+  <block wx:for="{{movies}}" wx:for-index="index">  
+    <swiper-item>  
+      <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
+    </swiper-item>  
+  </block>  
+</swiper> 
+
+ <view class="line">
+ 创意主题推荐
+ </view>
+
+ <view class="recommend">
+   <block wx:for="{{recommends}}" wx:key="{{index}}">
+    <view class="recommend-item">
+      <text class="item-title">{{item.title}}</text>
+      <text class="item-user">用户：{{item.publisher}}</text>
+      <button class="item-button" size="mini">查看详情</button>
+    </view>
+   </block>
+ </view>

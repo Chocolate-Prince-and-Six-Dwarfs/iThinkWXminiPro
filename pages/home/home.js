@@ -1,66 +1,29 @@
-// pages/home/home.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    movies: [
+      { url: '/images/111.png' },
+      { url: '/images/222.png' },
+      { url: '/images/333.png' }
+    ],
+    recommends:[]
   },
+  onLoad:function(options){
+   var that=this;
+   wx.request({
+    url: 'http://47.97.187.33:8080/idea/load',
+    data:{number:5},
+    method:"POST",
+    header: { "content-type": "application/x-www-form-urlencoded"},
+    success: function (res) {
+     console.log(res)
+     const recommends=res.data.data;
+     that.setData({
+       recommends:recommends
+     })
+   }
+})  
+}
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

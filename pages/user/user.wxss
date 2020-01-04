@@ -1,7 +1,7 @@
 /* pages/user/user.wxss */
 .bg {
   height: 150px;
-  background-color: #93bbf0;
+  background-color: #84a7e9;
 }
 
 .head {
@@ -17,7 +17,7 @@
 .login {
   display: flex;
   color: #fff;
-  font-size: 15px;
+  font-size: 20px;
   margin-top: 15rpx;
   justify-content: center;
 }
@@ -25,6 +25,13 @@
 .button {
   margin: 10px;
   font-size: 14px;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  color: #fff;
 }
 
 .head image {

@@ -2,18 +2,18 @@
 <view class="bg">
   <view class="head">
     <view class="headIcon">
-      <image src="{{userInfo.avatarUrl}}" style="width:70px;height:70px;"></image>
+      <image src="{{head}}" style="width:70px;height:70px;"></image>
     </view>
     <view class="login">
-      {{userInfo.nickName}}
+      <text>{{name}}</text>
     </view>
+    <view class="intro">简介：{{intro}}</view>
   </view>
-  <button class="button"  bindtap="goToIndexPage"> 登陆 </button>
 </view>
 
 <view class="hr"></view>
 <view class='item'>
-  <view class="title">手机绑定</view>
+  <view class="title">修改个人信息</view>
   <view class="detail2">
     <text>></text>
   </view>
@@ -21,7 +21,7 @@
 <view class="line"></view>
 
 <view class='item'>
-  <view class="title">阅读文章</view>
+  <view class="title">我的创意主题</view>
   <view class="detail2">
     <text>></text>
   </view>
@@ -29,7 +29,7 @@
 
 <view class="hr"></view>
 <view class='item'>
-  <view class="title">电影推荐</view>
+  <view class="title">我的团组</view>
   <view class="detail2">
     <text> ></text>
   </view>
@@ -43,7 +43,7 @@
 </view>
 <view class="line"></view>
 <view class="item">
-  <view class="title">意见反馈</view>
+  <view class="title">我的通知</view>
   <view class="detail2">
     <text> ></text>
   </view>
